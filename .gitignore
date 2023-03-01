@@ -1,0 +1,8 @@
+# node
+node_modules/
+
+# 敏感字元
+.env
+
+# 已編譯代碼
+/dist
