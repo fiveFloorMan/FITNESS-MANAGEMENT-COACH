@@ -26,4 +26,4 @@ npm install --save @types/mongodb@4.0.7 bcrypt@5.1.0 body-parser@1.20.2 dotenv@1
 ```
 3. **設定.env**
 MONGO_URI=請自行設定喔
-JWT_SECRET=SECRET
+JWT_SECRET=SECRET"# FITNESS-MANAGEMENT-COACH" 
