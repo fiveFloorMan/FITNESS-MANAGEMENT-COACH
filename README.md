@@ -25,5 +25,7 @@ npm install --save-dev @types/bcrypt@5.0.0 @types/express@4.17.17 @types/jsonweb
 npm install --save @types/mongodb@4.0.7 bcrypt@5.1.0 body-parser@1.20.2 dotenv@16.0.3 express@4.18.2 jsonwebtoken@9.0.0 mongodb@5.0.1 mongoose@6.9.2 passport@0.6.0 passport-jwt@4.0.1 passport-local@1.0.0 typescript@4.9.5
 ```
 3. **設定.env**
+```
 MONGO_URI=請自行設定喔
 JWT_SECRET=SECRET"# FITNESS-MANAGEMENT-COACH" 
+```
