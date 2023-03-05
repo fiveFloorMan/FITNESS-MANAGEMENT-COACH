@@ -20,7 +20,7 @@ export const UserController = {
             if (!user) {
                 return res.status(401).json({ error: info.message });
             }
-        const token = await signToken({ sub: user.id }, process.env.JWT_SECRET as string, '24h');
+        const token = await signToken({ sub: user.id }, process.env.JWT_SECRET as string, '30d');
         return res.json({ token });
         // 給予前端token之後讓前端自行處理跳轉
         }) (req, res)
