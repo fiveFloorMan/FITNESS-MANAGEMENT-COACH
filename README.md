@@ -28,7 +28,8 @@
 - PUT       /api/record/:id     更新個人健身紀錄(需要登入)
 - DELETE    /api/record/:id     瀏覽個人健身紀錄(需要登入)
 
-###　請求與回應
+### 請求與回應
+
 #### POST /api/login
 ##### 請求
 ```JSON
