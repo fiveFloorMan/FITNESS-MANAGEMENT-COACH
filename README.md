@@ -21,12 +21,14 @@
 ## API管理
 ### 端點
 
-- POST      /api/login          登入
-- POST      /api/register       註冊
-- GET       /api/record         瀏覽個人健身紀錄(需要登入)
-- POST      /api/record         新增個人健身紀錄(需要登入)
-- PUT       /api/record/:id     更新個人健身紀錄(需要登入)
-- DELETE    /api/record/:id     瀏覽個人健身紀錄(需要登入)
+| 方法   | 路徑                | 說明                      |
+|--------|---------------------|---------------------------|
+| POST   | /api/login          | 登入                      |
+| POST   | /api/register       | 註冊                      |
+| GET    | /api/record         | 瀏覽個人健身紀錄 (需要登入) |
+| POST   | /api/record         | 新增個人健身紀錄 (需要登入) |
+| PUT    | /api/record/:id     | 更新個人健身紀錄 (需要登入) |
+| DELETE | /api/record/:id     | 刪除個人健身紀錄 (需要登入) |
 
 ### 請求與回應
 
