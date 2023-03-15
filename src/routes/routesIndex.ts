@@ -1,17 +1,28 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { UserController } from '../controller/userController';
 import { RecordController } from '../controller/recordController';
 import { verifyUserToken } from '../middleware/auth';
 
-const router = express.Router();
+export class AppRouter {
+    private router: Router;
 
-router.post('/login', UserController.userLogin);
-router.post('/register', UserController.userRegister);
-// router.post('/logout'); 交由前端刪除token
+    constructor() {
+        this.router = express.Router();
+        this.setupRoutes();
+    }
 
-router.get('/record', verifyUserToken, RecordController.getAllRecord);
-router.post('/record', verifyUserToken, RecordController.createRecord);
-router.put('/record/:id', verifyUserToken, RecordController.updateRecord);
-router.delete('/record/:id', verifyUserToken, RecordController.deleteRecord);
+    public getRouter() {
+        return this.router;
+    }
 
-export default router;
+    private setupRoutes() {
+        this.router.post('/login', UserController.userLogin);
+        this.router.post('/register', UserController.userRegister);
+        // this.router.post('/logout'); 交由前端刪除token
+
+        this.router.get('/record', verifyUserToken, RecordController.getAllRecord);
+        this.router.post('/record', verifyUserToken, RecordController.createRecord);
+        this.router.put('/record/:id', verifyUserToken, RecordController.updateRecord);
+        this.router.delete('/record/:id', verifyUserToken, RecordController.deleteRecord);
+    }
+}
