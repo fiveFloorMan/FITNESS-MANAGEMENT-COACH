@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { UserController } from '../controller/userController';
+import { UserService } from '../controller/userController';
 import { RecordService } from '../controller/recordController';
 import { AuthMiddleware } from '../middleware/auth';
 
@@ -16,8 +16,8 @@ export class AppRouter {
     }
 
     private setupRoutes() {
-        this.router.post('/login', UserController.userLogin);
-        this.router.post('/register', UserController.userRegister);
+        this.router.post('/login', UserService.userLogin);
+        this.router.post('/register', UserService.userRegister);
         // this.router.post('/logout'); 交由前端刪除token
 
         this.router.get('/record', AuthMiddleware.verifyUserToken, RecordService.getAllRecord);

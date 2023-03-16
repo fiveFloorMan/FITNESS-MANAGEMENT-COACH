@@ -10,7 +10,7 @@ import { IUser, IsAdminLevel } from '../models/user'
 
 import '../config/passport'
 
-export class UserController {
+export class UserService {
     public static userLogin(req: Request, res: Response) {
         passport.authenticate('local', { session: false }, async (error: Error, user: any, info: any) => {
             if (error) {
