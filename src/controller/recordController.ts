@@ -7,8 +7,8 @@ import { verifyToken } from '../utils/token';
 import { findUser, findFitnessAction } from '../utils/search';
 import mongoose from 'mongoose';
 
-export const RecordController = {
-    getAllRecord: async ( req: Request, res: Response ) => {
+export class RecordController {
+    static async getAllRecord( req: Request, res: Response ) {
         try {
             const token = req.headers.authorization?.split(' ')[1];
             const decodedToken = await verifyToken(token as string, process.env.JWT_SECRET as string);
@@ -34,8 +34,9 @@ export const RecordController = {
                 error: error.message,
             });
         }
-    },
-    createRecord: async ( req: Request, res: Response ) => {
+    }
+
+    static async createRecord( req: Request, res: Response ) {
         try {
             const token = req.headers.authorization?.split(' ')[1];
             const decodedToken = await verifyToken(token as string, process.env.JWT_SECRET as string);
@@ -61,8 +62,9 @@ export const RecordController = {
                 error: error.message,
             });
         }
-    },
-    updateRecord: async ( req: Request, res: Response ) => {
+    }
+    
+    static async updateRecord( req: Request, res: Response ) {
         try {
             const trainingItem = await findFitnessAction(req.body.trainingItemId)
             const updatedRecord = await SingleTrainingModel.findByIdAndUpdate(
@@ -87,8 +89,9 @@ export const RecordController = {
                 error: error.message,
             });
         }
-    },
-    deleteRecord: async ( req: Request, res: Response ) => {
+    }
+
+    static async deleteRecord( req: Request, res: Response ) {
         try {
             await SingleTrainingModel.deleteOne({ _id: req.params.id})
             return res.status(200).json({ message: "Record deleted successfully!" });
@@ -99,4 +102,4 @@ export const RecordController = {
             });
         }
     }
-};
+}
