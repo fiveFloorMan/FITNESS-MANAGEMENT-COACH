@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
-import { UserService } from '../controller/userController';
-import { RecordService } from '../controller/recordController';
+import { UserService } from '../services/userService';
+import { RecordService } from '../services/recordService';
 import { AuthMiddleware } from '../middleware/auth';
 
 export class AppRouter {
