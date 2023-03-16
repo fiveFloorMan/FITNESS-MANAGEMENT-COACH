@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import { SingleTrainingModel } from '../models/singleTraining'
 
 import { verifyToken } from '../utils/token';
-import { UserDAO, FitnessActionDAO } from '../utils/search';
+import { UserDAO, FitnessActionDAO } from './searchService';
 import mongoose from 'mongoose';
 
 export class RecordService {
