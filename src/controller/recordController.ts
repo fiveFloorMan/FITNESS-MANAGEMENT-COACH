@@ -7,7 +7,7 @@ import { verifyToken } from '../utils/token';
 import { findUser, findFitnessAction } from '../utils/search';
 import mongoose from 'mongoose';
 
-export class RecordController {
+export class RecordService {
     static async getAllRecord( req: Request, res: Response ) {
         try {
             const token = req.headers.authorization?.split(' ')[1];
