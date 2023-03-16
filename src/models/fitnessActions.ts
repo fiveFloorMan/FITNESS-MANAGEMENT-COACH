@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose, { Model, Document, Types } from 'mongoose';
+
 
 export enum TrainingPart {
     CHEST = 'chest',
@@ -12,7 +13,7 @@ export enum TrainingPart {
     CALF_MUSCLE = 'calf muscle'
 }
 
-export interface IFitnessAction {
+export interface IFitnessAction extends Document{
     trainingName: String;
     trainingPart: TrainingPart; // 邏輯處理部分
 }
@@ -28,4 +29,4 @@ const FitnessActionSchema  = new mongoose.Schema<IFitnessAction>({
     }
 });
 
-export const FitnessActionModel  = mongoose.model('FitnessAction', FitnessActionSchema);
+export const FitnessActionModel: Model<IFitnessAction>  = mongoose.model('FitnessAction', FitnessActionSchema);

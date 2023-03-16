@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Model, Document, Types } from 'mongoose';
 
 export enum IsAdminLevel {
     MEMBER = 'member',
@@ -47,4 +47,4 @@ const UserSchema = new mongoose.Schema<IUser>({
     }
 });
 
-export const UserModel = mongoose.model('User', UserSchema)
+export const UserModel: Model<IUser> = mongoose.model<IUser>('User', UserSchema);

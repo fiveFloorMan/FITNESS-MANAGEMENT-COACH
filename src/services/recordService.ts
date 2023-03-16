@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import { SingleTrainingModel } from '../models/singleTraining'
 
 import { verifyToken } from '../utils/token';
-import { findUser, findFitnessAction } from '../utils/search';
+import { UserDAO, FitnessActionDAO } from '../utils/search';
 import mongoose from 'mongoose';
 
 export class RecordService {
@@ -40,8 +40,8 @@ export class RecordService {
         try {
             const token = req.headers.authorization?.split(' ')[1];
             const decodedToken = await verifyToken(token as string, process.env.JWT_SECRET as string);
-            const user = await findUser(decodedToken.sub);
-            const trainingItem = await findFitnessAction(req.body.trainingItemId)
+            const user =  await UserDAO.findById(decodedToken.sub);
+            const trainingItem = await FitnessActionDAO.findById(req.body.trainingItemId);
             const singleTraining = new SingleTrainingModel({
                 trainingDate: req.body.trainingDate,
                 trainingItemId: trainingItem,
@@ -66,7 +66,7 @@ export class RecordService {
     
     static async updateRecord( req: Request, res: Response ) {
         try {
-            const trainingItem = await findFitnessAction(req.body.trainingItemId)
+            const trainingItem = await FitnessActionDAO.findById(req.body.trainingItemId)
             const updatedRecord = await SingleTrainingModel.findByIdAndUpdate(
                 req.params.id,
                 {
