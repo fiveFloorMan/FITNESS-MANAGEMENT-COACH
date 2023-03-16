@@ -8,17 +8,19 @@ declare module 'express-serve-static-core' {
     }
 }
 
-export const verifyUserToken = async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) {
-        return res.redirect('/api/login');
+export class AuthMiddleware {
+    public static async verifyUserToken(req: Request, res: Response, next: NextFunction) {
+        const token = req.headers.authorization?.split(' ')[1];
+        if (!token) {
+            return res.redirect('/api/login');
+        }
+        try {
+            const decodedToken = await verifyToken(token, process.env.JWT_SECRET as string);
+    
+            req.userId = decodedToken.userId;
+            next();
+        } catch (err) {
+            return res.redirect('/api/login');
+        }
     }
-    try {
-        const decodedToken = await verifyToken(token, process.env.JWT_SECRET as string);
-
-        req.userId = decodedToken.userId;
-        next();
-    } catch (err) {
-        return res.redirect('/api/login');
-    }
-};
+}
